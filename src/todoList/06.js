@@ -19,7 +19,7 @@ const reducer = (state = [], action) => {
     case ADD_TODO:
       return [{ text: action.text, id: Date.now() }, ...state];
     case DELETE_TODO:
-      return state.filter((toDo) => toDo.id !== action.id);
+      return [];
     default:
       return state;
   }
@@ -34,7 +34,7 @@ const dispathAddToDo = (text) => {
 };
 
 const dispatchDeleteToDo = (e) => {
-  const id = parseInt(e.target.parentNode.id); //HTML로 받아오는 id는 string일 거기 때문에 parseInt를 해준다.
+  const id = e.target.parentNode.id;
   store.dispatch(deleteToDo(id));
 };
 
@@ -67,3 +67,5 @@ const onSubmit = (e) => {
 };
 
 form.addEventListener('submit', onSubmit);
+
+// filter 사용
